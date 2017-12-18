@@ -14,20 +14,20 @@
 int main()
 {
 	// Массив со строкой для поиска
-	char str[1024];
+	char stroka[10000];
 	//scanf("%s", &str);
+	printf("The maximum text length of 10,000 characters.\n");
 	printf("Enter your text: ");
-	fgets(str, 1024, stdin);
+	fgets(stroka, 1024, stdin);
 	// Набор символов, которые должны входить в искомый сегмент
-	char sep[10] = "  ";
+	char sep[] = "  ";
 	// Переменная, в которую будут заноситься начальные адреса частей
 	// строки str
 	char *istr;
 
-	printf("Your text: %s\n", str);
-	printf("Result: \n");
+	printf("Words with an odd number of letters: \n");
 	// Выделение первой части строки
-	istr = strtok(str, sep);
+	istr = strtok(stroka, sep);
 
 	// Выделение последующих частей
 	while (istr != NULL)
@@ -35,7 +35,7 @@ int main()
 		// Вывод очередной выделенной части
 		if ((strlen(istr) % 2) == 1) {
 			printf("%s\n", istr);
-		}
+			}
 
 		// Выделение очередной части строки
 		istr = strtok(NULL, sep);
