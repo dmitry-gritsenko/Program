@@ -39,34 +39,25 @@ int main(void)
 	char * OutFileName = "Lab4_output.txt";
 	FILE * InputFileName = fopen("Lab4_input.txt", "r");
 	int result = 0;
-	// Массив со строкой для поиска
 	char str[NUM];
-	//scanf("%s", &str);
 	fgets(str, 1024, InputFileName);
 	fclose(InputFileName);
 	FILE * file = fopen(OutFileName, "w+");
-	// Набор символов, которые должны входить в искомый сегмент
 	char sep[10] = "  ";
-	// Переменная, в которую будут заноситься начальные адреса частей
-	// строки str
 	char *istr;
 	char buffer[NUM];
 	Replace(str, ".", "", buffer);
 	Replace(str, ",", "", buffer);
-	//printf("%s", str);
-	//printf("Result : \n");
-	// Выделение первой части строки
 	istr = strtok(str, sep);
-	// Выделение последующих частей
 	while (istr != NULL)
-	{
+		{
 		if ((strlen(istr) % 2) == 1) 
 			{
 			result = fprintf(file, "%s\n", istr);
 			}
 		// Выделение очередной части строки
 		istr = strtok(NULL, sep);
-	}
+		}
 	if (!file) 
 	printf("Нет доступа к файлу!\n");
  
