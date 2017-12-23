@@ -11,32 +11,32 @@
 #include <conio.h>
 #include <string.h>
 
+#define NUM 1024
+
 int main()
 {
 	// Массив со строкой для поиска
-	char stroka[10000];
+	char line[NUM];
 	//scanf("%s", &str);
 	printf("The maximum text length of 10,000 characters.\n");
 	printf("Enter your text: ");
-	fgets(stroka, 1024, stdin);
+	fgets(line, NUM, stdin);
 	// Набор символов, которые должны входить в искомый сегмент
 	char sep[] = "  ";
 	// Переменная, в которую будут заноситься начальные адреса частей
 	// строки str
 	char *istr;
-
 	printf("Words with an odd number of letters: \n");
 	// Выделение первой части строки
-	istr = strtok(stroka, sep);
-
+	istr = strtok(line, sep);
 	// Выделение последующих частей
 	while (istr != NULL)
 	{
 		// Вывод очередной выделенной части
-		if ((strlen(istr) % 2) == 1) {
+		if ((strlen(istr) % 2) == 1) 
+			{
 			printf("%s\n", istr);
 			}
-
 		// Выделение очередной части строки
 		istr = strtok(NULL, sep);
 	}
