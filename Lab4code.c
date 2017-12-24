@@ -13,27 +13,27 @@
 
 #define NUM 1024
 
-void Replace(char str[], char a[], char b[], char buffer[])
-	{
+void Replace(char str[], char a[], char b[], char buffer[]) {
 		int pos = 0;
-		for (int i = 0; str[i]; i++)
-		{	
-			for (int j = 0; str[i + j] && a[j]; j++)   //начинается ли с i-ой позиции строка a
-				if (str[i + j] != a[j]) 
+		for (int i = 0; str[i]; i++) {	
+			for (int j = 0; str[i + j] && a[j]; j++) {   //начинается ли с i-ой позиции строка a
+				if (str[i + j] != a[j]) {
 					break;
-			if (!a[j])  //если a[j]=0, то мы дошли до конца строки a
-				{
+				}
+			}
+			if (!a[j]) { //если a[j]=0, то мы дошли до конца строки a
 				i += j - 1;  //в j у нас длина стоки a, которую мы перепрыгиваем
-				for (j = 0; b[j]; j++) buffer[pos++] = b[j];  //на место стоки a ставим строку b
-				}
-			else
-				{
-			buffer[pos++] = str[i];   //просто копируем символ
-				}
+				for (j = 0; b[j]; j++) { 
+					buffer[pos++] = b[j];
+				}//на место стоки a ставим строку b
+			}
+			else {
+				buffer[pos++] = str[i];   //просто копируем символ
+			}
 			buffer[pos] = NULL;  //ставим конец строки
 		}
 		strcpy(str, buffer);  //копируем в первоначальную строку
-	}
+}
 int main(void)
 	{
 	char * OutFileName = "Lab4_output.txt";
